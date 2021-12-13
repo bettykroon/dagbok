@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dagbok</title>
+    <script defer src="./script.js"></script>
+    <title>Document</title>
 </head>
 <body>
-    <h1>Skriv ett inlägg:</h1>
-    <textarea id="myText" cols="30" rows="5"></textarea><br>
-    <button id="myBtn">Skicka</button>
-    <div id="myDiv"></div>
-    <script src="script.js"></script>
-</body>
+    <input id="titleInput" type="text" placeholder="Titel">
+    <input id="descriptionInput" type="text" placeholder="Beskrivning">
+    <input id="dateInput" type="date" placeholder="Datum">
+    <button>Spara</button>
+    
+    <div id="postContainer"></div>
+</body> 
 </html>
