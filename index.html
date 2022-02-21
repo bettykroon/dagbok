@@ -5,14 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="./script.js"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <title>Min Gästbok</title>
 </head>
 <body>
-    <input id="titleInput" type="text" placeholder="Titel">
-    <input id="descriptionInput" type="text" placeholder="Beskrivning">
-    <input id="dateInput" type="date" placeholder="Datum">
-    <button>Spara</button>
+    <h1 id="header">Min Gästbok</h1>
+    <div id="form">
+        <input id="namnInput" type="text" placeholder="Namn" required><br>
+        <input id="textInput" type="text" placeholder="Skriv något roligt" required><br>
+        <input id="dateInput" type="date" placeholder="Datum" required><br>
+        <button>Skicka</button>
+    </div>
     
     <div id="postContainer"></div>
+    <div id="buttonContainer"></div>
 </body> 
 </html>

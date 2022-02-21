@@ -1,73 +1,88 @@
 window.addEventListener("load", () => {
-    renderPosts()
+    renderPosts();
 })
 
-let titleInput = document.getElementById("titleInput")
-let descriptionInput = document.getElementById("descriptionInput")
-let dateInput = document.getElementById("dateInput")
-let postContainer = document.getElementById("postContainer")
+let namnInput = document.getElementById("namnInput");
+let textInput = document.getElementById("textInput");
+let dateInput = document.getElementById("dateInput");
+let postContainer = document.getElementById("postContainer");
+let buttonContainer = document.getElementById("buttonContainer");
 
-document.getElementsByTagName("button")[0].addEventListener("click", addNewPost)
+gsap.from("#header", {duration: 3, x: 300, opacity: 0, scale: 0.5});
+
+document.getElementsByTagName("button")[0].addEventListener("click", addNewPost);
 
 function addNewPost() {
     let newPost = {
-        title: titleInput.value,
-        description: descriptionInput.value,
+        name: namnInput.value,
+        text: textInput.value,
         date: dateInput.value
     }
 
-    let collectedPosts = localStorage.getItem("posts")
+    let collectedPosts = localStorage.getItem("posts");
 
     if(collectedPosts) {
-        collectedPosts = JSON.parse(collectedPosts)
+        collectedPosts = JSON.parse(collectedPosts);
     } else {
-        collectedPosts = []
+        collectedPosts = [];
     }
 
-    collectedPosts.push(newPost)
+    collectedPosts.push(newPost);
 
-    localStorage.setItem("posts", JSON.stringify(collectedPosts))
+    localStorage.setItem("posts", JSON.stringify(collectedPosts));
 
-    renderPosts()
+    renderPosts();
 }
 
 function renderPosts() {
 
-    postContainer.innerHTML = ""
+    postContainer.innerHTML = "";
 
-    let posts = localStorage.getItem("posts")
+    let posts = localStorage.getItem("posts");
 
     if(posts) {
-        posts = JSON.parse(posts)
+        posts = JSON.parse(posts);
     } else {
-        let emptyHeader = document.createElement("h2")
-        emptyHeader.innerText = "Det fanns inga posts 😥"
-        postContainer.append(emptyHeader)
-        return
+        let emptyHeader = document.createElement("h2");
+        emptyHeader.innerText = "Inga inlägg ännu, bli den första!";
+        postContainer.append(emptyHeader);
     }
 
     posts.sort(function(a,b){
-        // Turn your strings into dates, and then subtract them
-        // to get a value that is either negative, positive, or zero.
         return new Date(b.date) + new Date(a.date);
     });
 
     posts.forEach((post) => {
-        console.log(post)
+        console.log(post);
 
-        let postDiv = document.createElement("div")
-        postDiv.style.margin = "50px"
+        let postDiv = document.createElement("div");
+        postDiv.id = "postDiv";
 
-        let titleText = document.createElement("h3")
-        titleText.innerText = post.title
+        let nameText = document.createElement("h3");
+        nameText.id = "nameText";
+        nameText.innerText = "Från: " + post.name;
         
-        let descText = document.createElement("h3")
-        descText.innerText = post.description
+        let descText = document.createElement("p");
+        descText.innerText = post.text;
         
-        let dateText = document.createElement("h3")
-        dateText.innerText = post.date
+        let dateText = document.createElement("h3");
+        dateText.innerText = post.date;
 
-        postDiv.append(titleText, descText, dateText)
-        postContainer.append(postDiv)
+        postDiv.append(nameText, descText, dateText);
+        postContainer.append(postDiv);
+    })
+
+    addRemovePostsButton();
+}
+
+function addRemovePostsButton(){
+    let clearPosts = document.createElement("button");
+    clearPosts.innerText = "Rensa inlägg";
+    clearPosts.id = "clearPosts";
+    buttonContainer.append(clearPosts);
+
+    document.getElementById("clearPosts").addEventListener("click", () => {
+        localStorage.clear();
+        postContainer.innerHTML = "<h2>Inga inlägg ännu, bli den första!</h2>";
     })
 }

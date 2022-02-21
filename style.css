@@ -1,0 +1,62 @@
+body {
+    background-color: #e8dfd8;
+}
+
+#header {
+    text-align: center;
+    color: #753e45;
+    text-shadow: 2px 2px white;
+    font-size: 3rem;
+}
+
+#form {
+    text-align: center;
+}
+
+input {
+    width: 40%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 40%;
+    background-color: #753e45;
+    color: #ad795b;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ab888a;
+    color: #524526;
+}
+
+#postContainer {
+    text-align: center;
+    margin: auto;
+}
+
+#postDiv {
+    width: 50%;
+    display: inline-block;
+    margin: 10px;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#buttonContainer {
+    text-align: center;
+}
+
+#nameText {
+    color: #524526;
+}
